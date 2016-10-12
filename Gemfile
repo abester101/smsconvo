@@ -33,5 +33,5 @@ end
 gem 'twilio-ruby', '~> 4.11'
 gem 'resque-scheduler', '~> 4.3'
 gem 'sinatra', github: 'sinatra/sinatra', :ref => '6b5a0ef3a4598366138fefe3f2b696ddeb371f3c'
-gem 'sentry-raven', '1.2.3'
+#gem 'sentry-raven', '1.2.3'
 gem 'mailchimp-api', '~> 2.0', require: 'mailchimp'
