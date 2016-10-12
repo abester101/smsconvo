@@ -1,0 +1,27 @@
+
+<h1>Hardbound SMS</h1>
+
+<%= link_to "Send message", new_message_path %>
+
+<h2>Users (<%= User.where(subscribed: true).count %>)</h2>
+
+<h5>NEEDS RESPONSE (<%= @needs_response.count %>)</h5>
+<% @needs_response.each do |user| %>
+  <li class="user needs-response">
+    <%= link_to user.label, user %>
+  </li>
+<% end %>
+
+<h5>RECENT THREADS</h5>
+<% @recent.each do |user| %>
+  <li class="user">
+    <%= link_to user.label, user %>
+  </li>
+<% end %>
+
+<h5>UNSUBSCRIBED</h5>
+<% @unsubscribed.each do |user| %>
+  <li class="user">
+    <%= link_to user.label, user %>
+  </li>
+<% end %>

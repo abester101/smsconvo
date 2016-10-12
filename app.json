@@ -1,0 +1,69 @@
+{
+  "name": "hardbound-sms",
+  "scripts": {
+  },
+  "env": {
+    "DOMAIN": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "TWILIO_SID": {
+      "required": true
+    },
+    "TWILIO_TOKEN": {
+      "required": true
+    },
+    "MAX_SENDER_USERS": {
+      "required": true
+    },
+    "INCOMING_SMS_URL": {
+      "required": true
+    },
+    "BATCH_SEND_USER_COUNT": {
+      "required": true
+    },
+    "BATCH_SEND_INTERVAL": {
+      "required": true
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "Standard-1X"
+    },
+    "web": {
+      "quantity": 1,
+      "size": "Standard-1X"
+    },
+    "resque": {
+      "quantity": 1,
+      "size": "Standard-1X"
+    }
+  },
+  "addons": [
+    "heroku-postgresql",
+    "heroku-redis"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}

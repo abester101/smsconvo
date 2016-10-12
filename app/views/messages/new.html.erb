@@ -1,0 +1,26 @@
+
+<div class='bulk-message'>
+  <h2>Send message</h2>
+  <div class="radiogroup">
+    <input type='radio' name='recipients' value='patron'>
+    <label>Patron Users: <strong><%= @patron_user_count %></strong></label>
+    <br/>
+    <input type='radio' name='recipients' value='all'>
+    <label>All Users: <strong><%= @all_user_count %></strong></label>
+    <br/>
+    <input type='radio' name='recipients' value='phone' disabled='disabled'>
+    <label class='disabled'>Phone: <strong>[Coming soon!]</strong></label>
+  </div>
+  <textarea text='textarea' name='message[body]'></textarea>
+  <button>Send</button>
+  <a class="preview-link" href="/message_preview">Preview</a>
+  <div class='messages'>
+    <p></p>
+    <ul></ul>
+  </div>
+</div>
+
+<script>
+  var allUserCount = <%= @all_user_count %>; 
+  var patronUserCount = <%= @patron_user_count %>; 
+</script>

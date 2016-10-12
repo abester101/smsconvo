@@ -1,0 +1,2 @@
+redis-server --port 6379 &
+heroku local -f Procfile.local -p 3001

@@ -1,0 +1,284 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx){ 
+  .iti-flag {
+    background-image: url(<%= asset_path 'flags@2x.png' %>) !important;
+  }
+}
+.iti-flag {
+  background-image: url(<%= asset_path 'flags.png' %>) !important;
+}
+.iti-flag.np{
+  background-color:transparent !important;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -webkit-appearance: none;
+  -webkit-text-size-adjust: 100%;
+  font-family: 'Helvetica Neue', helvetica, sans-serif;
+}
+.wf-loading {
+  visibility: hidden;
+}
+
+// $purple: #8B00DC;
+// $lightPurple: #E99FFF;
+
+// Lander
+.users-new {
+  body {
+    background: lightgray;
+    color: black;
+    text-align: center;
+    padding-top: 50px;
+  }
+  .brand {
+    // font-family: "omnes-pro";
+    // font-style: italic;
+    font-size: 60px;
+    line-height: 60px;
+    margin: 0;
+  }
+  .subtitle {
+    font-family: 'monaco', monospace;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 30px;
+  }
+  .new-user, .error-message, #phone, .submit {
+    font-family: 'monaco', monospace;
+    border: none;
+  }
+  .submit, #phone {
+    position: relative;
+  }
+  #phone {
+    font-size: 17px;
+    padding: 10px 10px 10px 50px;
+    border-radius: 30px 0 0 30px;
+    width: 250px;
+    &:focus {
+      outline: 0;
+    }
+  }
+  .inputs-container {
+    position: relative;
+    left: 18px;
+  }
+  .submit {
+    border-radius: 30px;
+    background: black;
+    color: white;
+    font-size: 17px;
+    padding: 10px 25px 10px 18px;
+    left: -24px;
+    top: 0px;
+    z-index: 2;
+    &:focus {
+      outline: 0;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .country-list {
+    color: #000;
+    font-family: 'monaco', monospace;
+  }
+  .error-message {
+    color: #FF7878;
+    display: none;
+    margin-top: 15px;
+  }
+}
+
+// Lander mobile
+@media (max-device-width: 480px) {
+  .users-new {
+    body {
+      padding-top: 20px;
+    }
+    .brand {
+      font-size: 45px;
+    }
+    .subtitle {
+      font-size: 16px;
+    }
+    .submit {
+      padding: 13px 20px 13px 20px;
+    }
+    #phone {
+      width: 230px;
+      padding: 13px 10px 13px 50px;
+    }
+    .submit, #phone {
+      font-size: 16px;
+    } 
+  }
+}
+
+// Admin
+.user {
+  margin-bottom: 5px;
+}
+.user a {
+  color: #666;
+}
+.needs-response a {
+  font-weight: bold;
+  color: #00B33F;
+}
+
+.clearfix {
+  clear: both;
+}
+.container {
+  position: fixed;
+  left: 300px;
+  right: 300px;
+}
+.header {
+  top: 0;
+  text-align: right;
+  font-size: 18px;
+  padding-top: 10px;
+}
+.back-link {
+  color: #00B33F;
+  font-weight: bold;
+  text-decoration: none;
+  float: left;
+  letter-spacing: -1px;
+}
+.user-label {
+  font-weight: bold;
+}
+
+.messages {
+  top: 65px;
+  bottom: 100px;
+  clear: both;
+  padding: 10px;
+  border: 1px solid #E6E6E6;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+}
+.submit {
+  bottom: 40px;
+}
+.message {
+  display: inline-block;
+  max-width: 55%;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 12px;
+  clear: both;
+  font-size: 15px !important;
+}
+.from-us {
+  float: right;
+  background: #00B33F;
+  color: black;
+}
+.from-them {
+  float: left;
+  background: #E9E8ED;
+}
+.img-msg {
+  max-width: 250px;
+  padding: 0;
+}
+#message_body {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 70%;
+  border: 0;
+  font-size: 14px;
+  padding: 15px;
+  border: 1px solid #E6E6E6;
+  &:focus {
+    outline: 0;
+  }
+}
+.send-message {
+  font-size: 16px;
+  border: 0;
+  background: #00B33F;
+  color: black;
+  float: right;
+  font-weight: bold;
+  padding: 15px;
+}
+
+.message.button {
+  float: left;
+  text-align: center;
+  width: 95%;
+  max-width: 95%;
+  button {
+    outline: none;
+    border-radius: 10px;
+    color: #777;
+    font-size: 16px;
+    border: 0;
+    background: #eee;
+    font-weight: bold;
+    padding: 15px;
+    width: 240px;
+    border: 1px solid #bcbcbc;
+  }
+  button:active {
+    background: #ccc;
+  }
+}
+
+// mobile 
+@media only screen and (max-width: 1000px) {
+  .container {
+    left: 0;
+    right: 0;
+  }
+  .header {
+    padding: 10px;
+  }
+  .messages {
+    top: 65px;
+    bottom: 70px;
+  }
+  .message {
+    max-width: 65%;
+  }
+  #message_body {
+    left: 5px;
+  }
+  .submit {
+    bottom: 10px;
+    padding: 0 5px;
+  }
+}
+
+
+
+// Unsubscribed
+input.subscribed-checkbox {
+  -webkit-appearance:checkbox;
+}
+label.subscribed-label {
+  font-size: 14px;
+}
+.submit textarea:disabled {
+  background-color: #efefef;
+  font-style: italic;
+  color: #bbb;
+}
+.submit input[type=submit]:disabled {
+  background-color: #efefef;
+  color: #bbb;
+}

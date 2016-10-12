@@ -1,0 +1,38 @@
+<% @subscribed = @user.subscribed %>
+
+<div class="header container">
+  <%= link_to '❮ Users', users_path, class: 'back-link' %>
+  <span class="user-label"><%= @user.label %></span>
+  <br/>
+  <%= check_box_tag 'subscribed', @subscribed, @subscribed, class: "subscribed-checkbox" %>
+  <label class="subscribed-label">Subscribed</label>
+</div>
+
+<div class="messages container">
+  <% @messages.each do |msg| %>
+    <% if msg.media_type != 'image/jpeg' %>
+      <div class="message from-<%= msg.from_us ? 'us' : 'them' %>" data-id="<%= msg.id %>">
+        <%= msg.body %>
+      </div>
+    <% else %>
+      <img class="message img-msg from-<%= msg.from_us ? 'us' : 'them' %>" data-id="<%= msg.id %>" src="<%= msg.media_url %>">
+    <% end %>
+  <% end %>
+  <% if @user.needs_response %>
+    <div class="message button resolved">
+      <button>Mark as responded</button>
+    </div>
+  <% end %>
+  <div class="clearfix"></div>
+</div>
+<div class="submit container">
+  <%= form_for @user.messages.build, url: "/users/#{@user.id}/messages", html: {class: "new-message"} do |f| %>
+    <% if @subscribed %>
+      <%= f.text_area :body%>
+    <% else %>
+      <%= f.text_area :body, disabled: true, value: "(Unsubscribed user)"%>
+    <% end %>
+    <%= hidden_field_tag(:user_id, @user.id) %>
+    <%= f.submit "Send", class: "send-message", disabled: !@subscribed %>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  phone: MyString
+  sid: MyString
+  friendly_name: MyString
+  iso_country: MyString
+  region: MyString
+
+two:
+  phone: MyString
+  sid: MyString
+  friendly_name: MyString
+  iso_country: MyString
+  region: MyString

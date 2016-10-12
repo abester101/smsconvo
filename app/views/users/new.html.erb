@@ -1,0 +1,8 @@
+<h1 class="brand">hardbound</h1>
+<p class="subtitle">Receive a text when we release new stories and <br/>have a chat to the creator.</p>
+<%= form_tag '/users', method: 'POST', class: 'new-user' %>
+  <div class="inputs-container">
+    <input type="tel" id="phone" name="phone"><input type="submit" class="submit" value="JOIN">
+  </div>
+  <div class="error-message">Oops, that phone number didn't work. Check it and try again?</div>
+</form>

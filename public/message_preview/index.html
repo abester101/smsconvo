@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="smsSplitApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Message Preview</title>
+  <link rel="stylesheet" href="/message_preview/css/message_preview.css"/>
+  <script src="/message_preview/js/angular.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Preview SMS</h2>
+    <div ng-controller="SmsSplitCtrl">
+      <textarea ng-trim="false" ng-model="input" placeholder="...message in here..."></textarea>
+      <label class="radio" ng-repeat="encoding in allEncodings">
+        <input type="radio" value="{{ encoding }}" name="encoding" ng-model="$parent.encoding">
+        {{ encoding }}
+      </label>
+      <div class="message-data">
+        <p>Message length: {{ input.length }}</p>
+        <p>Sms Segments: {{ smsSegments.length }}</p>
+      </div>
+      <div ng-repeat="segment in smsSegments track by $index"
+        class="container-fluid segment" ng-init="seg = $index">
+        <div class="row">
+          <div class="col-md-5">
+            <span ng-repeat="char in segment.text track by $index"
+              class="char p-{{seg}}-{{$index}} {{isEncoded[seg][$index]}}"
+              ng-mouseenter="highlightBytes(seg, $index)" ng-mouseleave="unhighlightBytes(seg, $index)"
+              >{{ char }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/message_preview/js/gsm.js"></script>
+  <script src="/message_preview/js/smssplit.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) { 
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+      var textarea = document.querySelector("textarea");
+      console.log('textarea', textarea);
+      var messageParam = getParameterByName("message");
+      console.log('messageParam', messageParam);
+      textarea.value = messageParam;
+      var event = new Event('change');
+      textarea.dispatchEvent(event);
+    });
+  </script>
+</body>
+</html>
